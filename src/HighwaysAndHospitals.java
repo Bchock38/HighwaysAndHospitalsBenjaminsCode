@@ -30,25 +30,32 @@ private static ArrayList <ArrayList> citiesTouching;
         cities = cities1;
         citiesTouching = new ArrayList<ArrayList>();
         citiesTouching.add(findTouching(1));
-        int current = 0;
-        while (getSizeofArrays() < n){
-            citiesTouching.add(findTouching(findmissingCities(citiesTouching.get(current))));
-            current++;
+        if (highwayCost > hospitalCost){
+            return n * hospitalCost;
+        }
+        else{
+            int current = 0;
+            while (getSizeofArrays() < n){
+                citiesTouching.add(findTouching(findmissingCities(citiesTouching.get(current))));
+                current++;
+            }
+            System.out.println(citiesTouching.size()*hospitalCost);
+            System.out.println(n);
+            return (citiesTouching.size()*hospitalCost1 + getSizeofArrays()/2);
+
         }
 
 
 
 
-        for (int i = 0; i < citiesTouching.get(0).size(); i++){
-            System.out.print(citiesTouching.get(0).get(i));
-        }
-        System.out.println();
-        for (int i = 0; i < citiesTouching.get(1).size(); i++){
-            System.out.print(citiesTouching.get(1).get(i));
-        }
+//        for (int i = 0; i < citiesTouching.get(0).size(); i++){
+//            System.out.print(citiesTouching.get(0).get(i));
+//        }
+//        System.out.println();
+//        for (int i = 0; i < citiesTouching.get(1).size(); i++){
+//            System.out.print(citiesTouching.get(1).get(i));
+//        }
 
-//
-        return 0;
     }
 
     public static ArrayList<Integer> findTouching(int toFind){
