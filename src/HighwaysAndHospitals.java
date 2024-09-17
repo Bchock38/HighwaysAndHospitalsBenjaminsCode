@@ -17,6 +17,7 @@ private static int n;
 private static int hospitalCost;
 private static int highwayCost;
 private static int[][] cities;
+private static int[] clusters;
 private static ArrayList <ArrayList> citiesTouching;
     /**
      * TODO: Complete this function, cost(), to return the minimum cost to provide
@@ -30,22 +31,35 @@ private static ArrayList <ArrayList> citiesTouching;
         cities = cities1;
         citiesTouching = new ArrayList<ArrayList>();
         citiesTouching.add(findTouching(1));
+        clusters = new int[cities.length];
+
         if (highwayCost > hospitalCost){
             return n * hospitalCost;
         }
-        else{
-            int current = 0;
-            while (getSizeofArrays() < n){
-                citiesTouching.add(findTouching(findmissingCities(citiesTouching.get(current))));
-                current++;
+        for (int i = 0; i < cities.length;i++){
+            if (clusters[cities[i][0]] == 0){
+                clusters[cities[i][0]] = cities1[i][1];
             }
-            System.out.println(citiesTouching.size()*hospitalCost);
-            System.out.println(n);
-            return (citiesTouching.size()*hospitalCost1 + getSizeofArrays()/2);
-
+            else{
+                clusters[clusters[cities[i][0]]] =  
+            }
         }
 
 
+
+//        else{
+//            int current = 0;
+//            while (getSizeofArrays() < n){
+//                citiesTouching.add(findTouching(findmissingCities(citiesTouching.get(current))));
+//                current++;
+//            }
+//            System.out.println(citiesTouching.size()*hospitalCost);
+//            System.out.println(n);
+//            return (citiesTouching.size()*hospitalCost1 + getSizeofArrays()/2);
+//
+//        }
+
+        //clusters*hospticalcount +(n-clusters*highwaycost)
 
 
 //        for (int i = 0; i < citiesTouching.get(0).size(); i++){
@@ -55,8 +69,9 @@ private static ArrayList <ArrayList> citiesTouching;
 //        for (int i = 0; i < citiesTouching.get(1).size(); i++){
 //            System.out.print(citiesTouching.get(1).get(i));
 //        }
-
+        return 0;
     }
+
 
     public static ArrayList<Integer> findTouching(int toFind){
         ArrayList<Integer> holding = new ArrayList<Integer>();
